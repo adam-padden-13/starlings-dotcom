@@ -3,12 +3,12 @@ import Header from "./components/Header"
 
 export function App() {
   return (
-    <div className="flex min-h-svh flex-col gap-6 border px-5 py-2">
+    <main className="flex min-h-svh flex-col gap-6 border px-5 py-2">
       <Header />
       <section className="flex flex-col items-center justify-center gap-4">
         <img src="/src/assets/nick.jpg" alt="Nick" className="max-w-70" />
       </section>
-    </div>
+    </main>
   )
 }
 
