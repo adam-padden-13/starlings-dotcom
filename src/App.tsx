@@ -23,3 +23,8 @@ export default App
 // <div className="font-mono text-xs text-muted-foreground">
 //   (Press <kbd>d</kbd> to toggle dark mode)
 // </div>
+
+// CREATE MODELS
+// SHOW
+// SONG
+// chances are you saw usat our last show. heres the setlist from that night

@@ -1,15 +1,12 @@
-import { RiLinksLine } from "@remixicon/react"
 import { useTheme } from "./theme-provider"
 import NavDrawer from "./NavDrawer"
 
 const Header = () => {
   return (
-    <section className="flex flex-row items-center justify-between">
-      {/* <RiMenuLine size={24} className="shrink-0" /> */}
+    <section className="relative flex h-16 items-center">
       <NavDrawer />
-      <Logo />
-      <div className="flex flex-row gap-3">
-        <RiLinksLine size={24} className="shrink-0" />
+      <div className="absolute left-1/2 -translate-x-1/2">
+        <Logo />
       </div>
     </section>
   )
@@ -20,7 +17,7 @@ const Logo = () => {
   const theme = useTheme()
 
   return (
-    <>
+    <div>
       {theme.theme === "dark" ? (
         <img
           src="/src/assets/starlings-logo-white.png"
@@ -34,6 +31,6 @@ const Logo = () => {
           className="max-w-60"
         />
       )}
-    </>
+    </div>
   )
 }

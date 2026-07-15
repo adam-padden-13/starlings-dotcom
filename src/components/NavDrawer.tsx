@@ -15,21 +15,24 @@ const NavDrawer = () => {
       <DrawerTrigger>
         <RiMenuLine size={24} className="shrink-0" />
       </DrawerTrigger>
-      <DrawerContent>
+      <DrawerContent className="w-10">
         <DrawerHeader>
           <DrawerClose>
             <RiCloseLargeLine size={24} className="shrink-0" />
           </DrawerClose>
         </DrawerHeader>
-        <div className="flex flex-col gap-4">
-          <Button className="text-2xl" variant="link">
-            Home
+        <div className="flex flex-col items-start gap-4 px-3 py-6">
+          <Button className="text-2xl" variant="ghost">
+            HOME
           </Button>
-          <Button className="text-2xl" variant="link">
-            Shows
+          <Button className="text-2xl" variant="ghost">
+            SHOWS
           </Button>
-          <Button className="text-2xl" variant="link">
-            Music
+          <Button className="text-2xl" variant="ghost">
+            MUSIC
+          </Button>
+          <Button className="text-2xl" variant="ghost">
+            SONG EXPLORER
           </Button>
         </div>
 
