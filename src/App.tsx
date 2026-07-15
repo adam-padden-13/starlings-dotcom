@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button"
-import Header from "./components/Header"
+import Header from "./components/home-page/Header"
+import SignUpModal from "./components/home-page/SignUpModal"
 
 export function App() {
   return (
@@ -8,6 +8,7 @@ export function App() {
       <section className="flex flex-col items-center justify-center gap-4">
         <img src="/src/assets/nick.jpg" alt="Nick" className="max-w-70" />
       </section>
+      <SignUpModal />
     </main>
   )
 }

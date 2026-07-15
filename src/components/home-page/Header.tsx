@@ -1,7 +1,8 @@
-import { useTheme } from "./theme-provider"
+import React from "react"
+import { useTheme } from "../theme-provider"
 import NavDrawer from "./NavDrawer"
 import type { NavButton } from "@/app/types/NavButton"
-import { Button } from "./ui/button"
+import { Button } from "../ui/button"
 import { NAV_BUTTONS, SOCIAL_BUTTONS } from "@/app/constants/button-values"
 
 const Header = () => {
@@ -24,10 +25,29 @@ export default Header
 
 const Logo = () => {
   const theme = useTheme()
+  const [resolvedTheme, setResolvedTheme] = React.useState<"light" | "dark">(
+    "light"
+  )
+
+  React.useEffect(() => {
+    const resolveTheme = () => {
+      if (theme.theme === "system") {
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+        setResolvedTheme(isDark ? "dark" : "light")
+      } else {
+        setResolvedTheme(theme.theme)
+      }
+    }
+
+    resolveTheme()
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    mediaQuery.addEventListener("change", resolveTheme)
+    return () => mediaQuery.removeEventListener("change", resolveTheme)
+  }, [theme.theme])
 
   return (
     <div>
-      {theme.theme === "dark" ? (
+      {resolvedTheme === "dark" ? (
         <img
           src="/src/assets/starlings-logo-white.png"
           alt="Starlings Logo"
