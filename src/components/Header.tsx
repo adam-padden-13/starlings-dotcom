@@ -1,14 +1,22 @@
 import { useTheme } from "./theme-provider"
 import NavDrawer from "./NavDrawer"
 import type { NavButton } from "@/app/types/NavButton"
+import { Button } from "./ui/button"
+import { NAV_BUTTONS, SOCIAL_BUTTONS } from "@/app/constants/button-values"
 
 const Header = () => {
   return (
-    <header className="relative flex h-16 items-center">
-      <NavDrawer className="md:hidden" buttons={NAV_BUTTONS} />
+    <header className="relative flex h-16 items-center justify-between">
+      <NavDrawer
+        className="md:hidden"
+        navButtons={NAV_BUTTONS}
+        socialButtons={SOCIAL_BUTTONS}
+      />
+      <DesktopNav buttons={NAV_BUTTONS} className="hidden md:flex" />
       <div className="absolute left-1/2 -translate-x-1/2">
         <Logo />
       </div>
+      <SocialNav buttons={SOCIAL_BUTTONS} className="hidden gap-2 md:flex" />
     </header>
   )
 }
@@ -23,22 +31,48 @@ const Logo = () => {
         <img
           src="/src/assets/starlings-logo-white.png"
           alt="Starlings Logo"
-          className="max-w-60"
+          className="max-w-60 md:max-w-48 lg:max-w-50"
         />
       ) : (
         <img
           src="/src/assets/starlings-logo-black.png"
           alt="Starlings Logo"
-          className="max-w-60"
+          className="max-w-60 md:max-w-48 lg:max-w-50"
         />
       )}
     </div>
   )
 }
 
-const NAV_BUTTONS: NavButton[] = [
-  { label: "HOME", href: "/" },
-  { label: "SHOWS", href: "/shows" },
-  { label: "MUSIC", href: "/music" },
-  { label: "SONG EXPLORER", href: "/song-explorer" },
-]
+const DesktopNav = ({
+  buttons,
+  className,
+}: {
+  buttons: NavButton[]
+  className?: string
+}) => {
+  return (
+    <div className={className}>
+      {buttons.map((button) => (
+        <Button
+          key={button.href}
+          className="text-xs md:inline-flex"
+          variant="ghost"
+          asChild
+        >
+          <a href={button.href}>{button.label}</a>
+        </Button>
+      ))}
+    </div>
+  )
+}
+
+const SocialNav = ({
+  buttons,
+  className,
+}: {
+  buttons: NavButton[]
+  className?: string
+}) => {
+  return <div className={className}>{buttons.map((button) => button.icon)}</div>
+}

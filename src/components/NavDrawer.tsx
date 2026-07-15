@@ -11,11 +11,16 @@ import {
 import type { NavButton } from "@/app/types/NavButton"
 
 interface NavDrawerProps {
-  buttons: NavButton[]
+  navButtons: NavButton[]
+  socialButtons: NavButton[]
   className?: string
 }
 
-const NavDrawer = ({ className, buttons }: NavDrawerProps) => {
+const NavDrawer = ({
+  className,
+  navButtons,
+  socialButtons,
+}: NavDrawerProps) => {
   return (
     <div className={`${className}`}>
       <Drawer direction="left">
@@ -33,7 +38,7 @@ const NavDrawer = ({ className, buttons }: NavDrawerProps) => {
             </DrawerClose>
           </DrawerHeader>
           <div className="flex flex-col items-start gap-4 px-3 py-6">
-            {buttons.map((button) => (
+            {navButtons.map((button) => (
               <Button
                 key={button.href}
                 className="text-2xl"
@@ -45,7 +50,13 @@ const NavDrawer = ({ className, buttons }: NavDrawerProps) => {
               </Button>
             ))}
           </div>
-
+          <div className="flex flex-row items-start gap-4 px-3 py-6">
+            {socialButtons.map((button) => (
+              <a aria-label={button.label} href={button.href}>
+                {button.icon}
+              </a>
+            ))}
+          </div>
           <DrawerFooter>{/* <Button>Submit</Button> */}</DrawerFooter>
         </DrawerContent>
       </Drawer>
