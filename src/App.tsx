@@ -1,14 +1,11 @@
 import Header from "./features/home/components/Header"
-import SignUpModal from "./features/home/components/SignUpModal"
+import HomeScreen from "./features/home/HomeScreen"
 
 export function App() {
   return (
     <main className="flex min-h-svh flex-col gap-6 border px-5 py-2">
       <Header />
-      <section className="flex flex-col items-center justify-center gap-4">
-        <img src="/src/assets/nick.jpg" alt="Nick" className="max-w-70" />
-      </section>
-      <SignUpModal />
+      <HomeScreen />
     </main>
   )
 }
