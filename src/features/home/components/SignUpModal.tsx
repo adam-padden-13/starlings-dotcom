@@ -5,14 +5,13 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../../components/ui/dialog"
-import { Button } from "@/components/ui/button"
+} from "@/shadcn-components/ui/dialog"
 
 const SignUpModal = () => {
   return (
     <Dialog>
-      <DialogTrigger>
-        <Button>Sign Up</Button>
+      <DialogTrigger className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
+        Sign Up
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>

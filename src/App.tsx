@@ -1,5 +1,5 @@
-import Header from "./components/home-page/Header"
-import SignUpModal from "./components/home-page/SignUpModal"
+import Header from "./features/home/components/Header"
+import SignUpModal from "./features/home/components/SignUpModal"
 
 export function App() {
   return (
@@ -14,16 +14,6 @@ export function App() {
 }
 
 export default App
-
-// <div>
-//   <h1 className="font-medium">Project ready!</h1>
-//   <p>You may now add components and start building.</p>
-//   <p>We&apos;ve already added the button component for you.</p>
-//   <Button className="mt-2">Button</Button>
-// </div>
-// <div className="font-mono text-xs text-muted-foreground">
-//   (Press <kbd>d</kbd> to toggle dark mode)
-// </div>
 
 // CREATE MODELS
 // SHOW

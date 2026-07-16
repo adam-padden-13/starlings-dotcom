@@ -1,5 +1,5 @@
 import { RiCloseLargeLine, RiMenuLine } from "@remixicon/react"
-import { Button } from "../ui/button"
+import { Button } from "@/shadcn-components/ui/button"
 import {
   Drawer,
   DrawerClose,
@@ -7,7 +7,7 @@ import {
   DrawerFooter,
   DrawerHeader,
   DrawerTrigger,
-} from "../ui/drawer"
+} from "@/shadcn-components/ui/drawer"
 import type { NavButton } from "@/app/types/NavButton"
 
 interface NavDrawerProps {

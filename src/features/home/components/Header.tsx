@@ -1,8 +1,8 @@
 import React from "react"
-import { useTheme } from "../theme-provider"
-import NavDrawer from "./NavDrawer"
+import { useTheme } from "@/shadcn-components/theme-provider"
+import NavDrawer from "@/features/home/components/NavDrawer"
 import type { NavButton } from "@/app/types/NavButton"
-import { Button } from "../ui/button"
+import { Button } from "@/shadcn-components/ui/button"
 import { NAV_BUTTONS, SOCIAL_BUTTONS } from "@/app/constants/button-values"
 
 const Header = () => {
