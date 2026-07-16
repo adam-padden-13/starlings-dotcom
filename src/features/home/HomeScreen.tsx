@@ -1,8 +1,9 @@
 import { Separator } from "@/components/ui/separator"
-import ShowsSection from "../shows/ShowsSection"
+import ShowsSection from "./sections/ShowsSection"
 import SignUpModal from "./components/SignUpModal"
 import { pastShows, upcomingShows } from "@/app/constants/shows-data"
 import { useState } from "react"
+import MusicSection from "../music/MusicSection"
 
 const HomeScreen = () => {
   const [showPastShows, setShowPastShows] = useState(false)
@@ -19,6 +20,7 @@ const HomeScreen = () => {
           else setShowPastShows(false)
         }}
       />
+      <MusicSection />
     </section>
   )
 }
