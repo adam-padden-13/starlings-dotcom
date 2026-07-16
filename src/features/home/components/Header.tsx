@@ -94,5 +94,13 @@ const SocialNav = ({
   buttons: NavButton[]
   className?: string
 }) => {
-  return <div className={className}>{buttons.map((button) => button.icon)}</div>
+  return (
+    <div className={className}>
+      {buttons.map((button) => (
+        <a target="_blank" href={button.href}>
+          {button.icon}
+        </a>
+      ))}
+    </div>
+  )
 }

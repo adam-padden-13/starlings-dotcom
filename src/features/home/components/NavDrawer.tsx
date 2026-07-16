@@ -52,7 +52,7 @@ const NavDrawer = ({
           </div>
           <div className="flex flex-row items-start gap-4 px-3 py-6">
             {socialButtons.map((button) => (
-              <a aria-label={button.label} href={button.href}>
+              <a aria-label={button.label} href={button.href} target="_blank">
                 {button.icon}
               </a>
             ))}
