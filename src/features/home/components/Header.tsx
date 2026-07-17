@@ -4,6 +4,8 @@ import NavDrawer from "@/features/home/components/NavDrawer"
 import type { NavButton } from "@/app/types/NavButton"
 import { Button } from "@/shadcn-components/ui/button"
 import { NAV_BUTTONS, SOCIAL_BUTTONS } from "@/app/constants/button-values"
+import whiteLogo from "@/assets/starlings-logo-white.png"
+import blackLogo from "@/assets/starlings-logo-black.png"
 
 const Header = () => {
   return (
@@ -49,13 +51,13 @@ const Logo = () => {
     <div>
       {resolvedTheme === "dark" ? (
         <img
-          src="/src/assets/starlings-logo-white.png"
+          src={whiteLogo}
           alt="Starlings Logo"
           className="max-w-60 md:max-w-48 lg:max-w-50"
         />
       ) : (
         <img
-          src="/src/assets/starlings-logo-black.png"
+          src={blackLogo}
           alt="Starlings Logo"
           className="max-w-60 md:max-w-48 lg:max-w-50"
         />

@@ -1,13 +1,12 @@
 import {
   Card,
-  CardAction,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
 import { Button } from "@/shadcn-components/ui/button"
+import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 
 const MusicSection = () => {
   return (
@@ -16,7 +15,7 @@ const MusicSection = () => {
 
       <Card>
         <img
-          src="/src/assets/try-hard-town-ep.png"
+          src={tryHardTownArtwork}
           alt="Try Hard Town EP"
           className="max-w-70"
         />
