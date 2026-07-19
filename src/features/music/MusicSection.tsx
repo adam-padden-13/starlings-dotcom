@@ -5,8 +5,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Button } from "@/shadcn-components/ui/button"
 import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
+import StreamPopover from "./StreamPopover"
+import { TRY_HARD_TOWN_EP } from "@/app/constants/urls"
 
 const MusicSection = () => {
   return (
@@ -23,9 +24,12 @@ const MusicSection = () => {
           <CardTitle>Try Hard Town E.P.</CardTitle>
           <CardDescription>2025</CardDescription>
         </CardHeader>
-
         <CardFooter className="flex w-full justify-center">
-          <Button>STREAM</Button>
+          <StreamPopover
+            spotify={TRY_HARD_TOWN_EP.spotify}
+            appleMusic={TRY_HARD_TOWN_EP.appleMusic}
+            bandcamp={TRY_HARD_TOWN_EP.bandcamp}
+          />
         </CardFooter>
       </Card>
     </section>

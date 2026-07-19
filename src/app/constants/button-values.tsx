@@ -5,6 +5,7 @@ import {
   RiYoutubeLine,
 } from "@remixicon/react"
 import type { NavButton } from "../types/NavButton"
+import { SOCIALS } from "./urls"
 
 export const NAV_BUTTONS: NavButton[] = [
   { label: "HOME", href: "/" },
@@ -16,22 +17,22 @@ export const NAV_BUTTONS: NavButton[] = [
 export const SOCIAL_BUTTONS: NavButton[] = [
   {
     label: "INSTAGRAM",
-    href: "https://www.instagram.com/starlings_detroit/",
+    href: SOCIALS.instagram,
     icon: <RiInstagramLine size={30} />,
   },
   {
     label: "SPOTIFY",
-    href: "https://open.spotify.com/artist/5vqvxxV7O5X2K0pB1jSUXH?si=elcDhQrCStGCGiPaKuz5FQ",
+    href: SOCIALS.spotify,
     icon: <RiSpotifyLine size={30} />,
   },
   {
     label: "YOUTUBE",
-    href: "https://www.youtube.com/@Starlings-Detroit",
+    href: SOCIALS.youtube,
     icon: <RiYoutubeLine size={30} />,
   },
   {
     label: "Apple Music",
-    href: "https://music.apple.com/us/artist/starlings/1785026454",
+    href: SOCIALS.appleMusic,
     icon: <RiAppleLine size={30} />,
   },
 ]
