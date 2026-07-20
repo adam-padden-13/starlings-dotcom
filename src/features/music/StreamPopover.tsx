@@ -4,7 +4,8 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/shadcn-components/ui/popover"
-import { RiAppleLine, RiMusicLine, RiSpotifyLine } from "@remixicon/react"
+import { RiAppleLine, RiSpotifyLine } from "@remixicon/react"
+import bandcampLogo from "@/assets/bandcamp.svg"
 
 interface StreamPopoverProps {
   spotify: string
@@ -30,7 +31,7 @@ const StreamPopover = ({
           <RiAppleLine size={30} />
         </a>
         <a aria-label="Bandcamp link" href={bandcamp} target="_blank">
-          <RiMusicLine size={30} />
+          <img src={bandcampLogo} alt="Bandcamp" className="w-8" />
         </a>
       </PopoverContent>
     </Popover>

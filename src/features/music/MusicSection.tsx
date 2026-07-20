@@ -7,83 +7,51 @@ import {
 } from "@/components/ui/card"
 import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 import tryToArtwork from "@/assets/try-to-acoustic.png"
-import { TRY_HARD_TOWN_EP } from "@/app/constants/urls"
-import { RiAppleLine, RiSpotifyLine } from "@remixicon/react"
-import bandcampLogo from "@/assets/bandcamp.svg"
+import { TRY_HARD_TOWN_EP, TRY_TO_ACOUSTIC } from "@/app/constants/urls"
+import StreamPopover from "./StreamPopover"
 
 const MusicSection = () => {
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">MUSIC</h2>
-      <Card>
-        <img
-          src={tryHardTownArtwork}
-          alt="Try Hard Town EP"
-          className="max-w-70"
-        />
-        <CardHeader>
-          <CardTitle>Try Hard Town E.P.</CardTitle>
-          <CardDescription>2025</CardDescription>
-        </CardHeader>
-        <CardFooter className="flex w-full justify-center gap-4">
-          <a
-            aria-label="Spotify link"
-            href={TRY_HARD_TOWN_EP.spotify}
-            target="_blank"
-          >
-            <RiSpotifyLine size={36} />
-          </a>
-          <a
-            aria-label="Apple Music link"
-            href={TRY_HARD_TOWN_EP.appleMusic}
-            target="_blank"
-          >
-            <RiAppleLine size={36} />
-          </a>
-          <a
-            aria-label="Bandcamp link"
-            href={TRY_HARD_TOWN_EP.bandcamp}
-            target="_blank"
-          >
-            <img src={bandcampLogo} alt="Bandcamp" className="w-8" />
-          </a>
-        </CardFooter>
-      </Card>
-
-      <Card>
-        <img
-          src={tryToArtwork}
-          alt="Try To (Have a Good Time) artwork"
-          className="max-w-70"
-        />
-        <CardHeader>
-          <CardTitle>Try To (Have a Good Time) - Acoustic single</CardTitle>
-          <CardDescription>2025</CardDescription>
-        </CardHeader>
-        <CardFooter className="flex w-full justify-center gap-4">
-          <a
-            aria-label="Spotify link"
-            href={TRY_HARD_TOWN_EP.spotify}
-            target="_blank"
-          >
-            <RiSpotifyLine size={36} />
-          </a>
-          <a
-            aria-label="Apple Music link"
-            href={TRY_HARD_TOWN_EP.appleMusic}
-            target="_blank"
-          >
-            <RiAppleLine size={36} />
-          </a>
-          <a
-            aria-label="Bandcamp link"
-            href={TRY_HARD_TOWN_EP.bandcamp}
-            target="_blank"
-          >
-            <img src={bandcampLogo} alt="Logo" className="w-8" />
-          </a>
-        </CardFooter>
-      </Card>
+      <section className="flex w-full flex-col items-center justify-center gap-6 md:flex-row md:gap-10">
+        <Card>
+          <img
+            src={tryHardTownArtwork}
+            alt="Try Hard Town EP"
+            className="max-w-70"
+          />
+          <CardHeader>
+            <CardTitle>Try Hard Town E.P.</CardTitle>
+            <CardDescription>2025</CardDescription>
+          </CardHeader>
+          <CardFooter className="flex w-full justify-center gap-4">
+            <StreamPopover
+              spotify={TRY_HARD_TOWN_EP.spotify}
+              appleMusic={TRY_HARD_TOWN_EP.appleMusic}
+              bandcamp={TRY_HARD_TOWN_EP.bandcamp}
+            />
+          </CardFooter>
+        </Card>
+        <Card>
+          <img
+            src={tryToArtwork}
+            alt="Try To (Have a Good Time) artwork"
+            className="max-w-70"
+          />
+          <CardHeader>
+            <CardTitle>Try To (Have a Good Time) - Acoustic single</CardTitle>
+            <CardDescription>2025</CardDescription>
+          </CardHeader>
+          <CardFooter className="flex w-full justify-center gap-4">
+            <StreamPopover
+              spotify={TRY_TO_ACOUSTIC.spotify}
+              appleMusic={TRY_TO_ACOUSTIC.appleMusic}
+              bandcamp={TRY_TO_ACOUSTIC.bandcamp}
+            />
+          </CardFooter>
+        </Card>
+      </section>
     </section>
   )
 }

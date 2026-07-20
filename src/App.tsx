@@ -1,11 +1,13 @@
+import Footer from "./features/home/components/Footer"
 import Header from "./features/home/components/Header"
 import HomeScreen from "./features/home/HomeScreen"
 
 export function App() {
   return (
-    <main className="flex min-h-svh flex-col gap-6 border px-5 py-2">
+    <main className="mx-auto flex min-h-svh max-w-280 flex-col gap-6 px-5 pt-4 pb-4">
       <Header />
       <HomeScreen />
+      <Footer />
     </main>
   )
 }

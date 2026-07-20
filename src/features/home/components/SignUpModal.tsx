@@ -3,22 +3,25 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
   DialogTrigger,
 } from "@/shadcn-components/ui/dialog"
+import MailingListSection from "./MailingListSection"
 
 const SignUpModal = () => {
   return (
     <Dialog>
       <DialogTrigger className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
-        Sign Up
+        SIGN UP
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          {/* <DialogTitle>Mailing List</DialogTitle> */}
+          <DialogTitle>Starlings Mailing List</DialogTitle>
           <DialogDescription>
-            Sign up for the Starlings mailing list for updates, and sneak peaks.
+            Sign up for updates and sneak peaks
           </DialogDescription>
         </DialogHeader>
+        <MailingListSection />
       </DialogContent>
     </Dialog>
   )

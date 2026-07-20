@@ -1,25 +1,21 @@
 import React from "react"
 import { useTheme } from "@/shadcn-components/theme-provider"
-import NavDrawer from "@/features/home/components/NavDrawer"
-import type { NavButton } from "@/app/types/NavButton"
-import { Button } from "@/shadcn-components/ui/button"
-import { NAV_BUTTONS, SOCIAL_BUTTONS } from "@/app/constants/button-values"
 import whiteLogo from "@/assets/starlings-logo-white.png"
 import blackLogo from "@/assets/starlings-logo-black.png"
 
 const Header = () => {
   return (
     <header className="relative flex h-16 items-center justify-between">
-      <NavDrawer
+      {/* <NavDrawer
         className="md:hidden"
         navButtons={NAV_BUTTONS}
         socialButtons={SOCIAL_BUTTONS}
-      />
-      <DesktopNav buttons={NAV_BUTTONS} className="hidden md:flex" />
+      /> */}
+      {/* <DesktopNav buttons={NAV_BUTTONS} className="hidden md:flex" /> */}
       <div className="absolute left-1/2 -translate-x-1/2">
         <Logo />
       </div>
-      <SocialNav buttons={SOCIAL_BUTTONS} className="hidden gap-2 md:flex" />
+      {/* <SocialNav buttons={SOCIAL_BUTTONS} className="hidden gap-2 md:flex" /> */}
     </header>
   )
 }
@@ -50,59 +46,10 @@ const Logo = () => {
   return (
     <div>
       {resolvedTheme === "dark" ? (
-        <img
-          src={whiteLogo}
-          alt="Starlings Logo"
-          className="max-w-60 md:max-w-48 lg:max-w-50"
-        />
+        <img src={whiteLogo} alt="Starlings Logo" className="max-w-60" />
       ) : (
-        <img
-          src={blackLogo}
-          alt="Starlings Logo"
-          className="max-w-60 md:max-w-48 lg:max-w-50"
-        />
+        <img src={blackLogo} alt="Starlings Logo" className="max-w-60" />
       )}
-    </div>
-  )
-}
-
-const DesktopNav = ({
-  buttons,
-  className,
-}: {
-  buttons: NavButton[]
-  className?: string
-}) => {
-  return (
-    <div className={className}>
-      {buttons.map((button) => (
-        <Button
-          key={button.href}
-          className="text-xs md:inline-flex"
-          variant="ghost"
-          asChild
-        >
-          <a href={button.href}>{button.label}</a>
-        </Button>
-      ))}
-    </div>
-  )
-}
-
-const SocialNav = ({
-  buttons,
-  className,
-}: {
-  buttons: NavButton[]
-  className?: string
-}) => {
-  return (
-    <div className={className}>
-      {buttons.map((button) => (
-        <a target="_blank" key={button.href} href={button.href}>
-          {button.icon}
-        </a>
-      ))}
     </div>
   )
 }
