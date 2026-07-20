@@ -3,7 +3,6 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/shadcn-components/ui/dialog"
 
@@ -15,8 +14,10 @@ const SignUpModal = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Sign Up for our mailling list</DialogTitle>
-          <DialogDescription>NEED TO FINISH</DialogDescription>
+          {/* <DialogTitle>Mailing List</DialogTitle> */}
+          <DialogDescription>
+            Sign up for the Starlings mailing list for updates, and sneak peaks.
+          </DialogDescription>
         </DialogHeader>
       </DialogContent>
     </Dialog>
