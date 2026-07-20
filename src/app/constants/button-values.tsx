@@ -1,11 +1,13 @@
 import {
   RiAppleLine,
   RiInstagramLine,
+  RiMailLine,
   RiSpotifyLine,
   RiYoutubeLine,
 } from "@remixicon/react"
 import type { NavButton } from "../types/NavButton"
 import { SOCIALS } from "./urls"
+import bandcampLogo from "@/assets/bandcamp.svg"
 
 export const NAV_BUTTONS: NavButton[] = [
   { label: "HOME", href: "/" },
@@ -15,6 +17,11 @@ export const NAV_BUTTONS: NavButton[] = [
 ]
 
 export const SOCIAL_BUTTONS: NavButton[] = [
+  {
+    label: "EMAIL",
+    href: SOCIALS.email,
+    icon: <RiMailLine size={30} />,
+  },
   {
     label: "INSTAGRAM",
     href: SOCIALS.instagram,
@@ -26,13 +33,18 @@ export const SOCIAL_BUTTONS: NavButton[] = [
     icon: <RiSpotifyLine size={30} />,
   },
   {
-    label: "YOUTUBE",
-    href: SOCIALS.youtube,
-    icon: <RiYoutubeLine size={30} />,
-  },
-  {
     label: "Apple Music",
     href: SOCIALS.appleMusic,
     icon: <RiAppleLine size={30} />,
+  },
+  {
+    label: "Bandcamp",
+    href: SOCIALS.bandcamp,
+    icon: <img src={bandcampLogo} alt="Bandcamp" className="w-8" />,
+  },
+  {
+    label: "YOUTUBE",
+    href: SOCIALS.youtube,
+    icon: <RiYoutubeLine size={30} />,
   },
 ]

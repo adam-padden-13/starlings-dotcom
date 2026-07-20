@@ -50,14 +50,16 @@ const NavDrawer = ({
               </Button>
             ))}
           </div>
-          <div className="flex flex-row items-start gap-4 px-3 py-6">
-            {socialButtons.map((button) => (
-              <a aria-label={button.label} href={button.href} target="_blank">
-                {button.icon}
-              </a>
-            ))}
-          </div>
-          <DrawerFooter>{/* <Button>Submit</Button> */}</DrawerFooter>
+
+          <DrawerFooter>
+            <div className="flex flex-row flex-wrap items-start gap-4 px-3 py-6">
+              {socialButtons.map((button) => (
+                <a aria-label={button.label} href={button.href} target="_blank">
+                  {button.icon}
+                </a>
+              ))}
+            </div>
+          </DrawerFooter>
         </DrawerContent>
       </Drawer>
     </div>

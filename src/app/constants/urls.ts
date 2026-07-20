@@ -11,4 +11,15 @@ export const SOCIALS = {
     "https://open.spotify.com/artist/5vqvxxV7O5X2K0pB1jSUXH?si=elcDhQrCStGCGiPaKuz5FQ",
   youtube: "https://www.youtube.com/@Starlings-Detroit",
   appleMusic: "https://music.apple.com/us/artist/starlings/1785026454",
+  bandcamp: "https://starlings-detroit.bandcamp.com/",
+  email: "mailto: contact@starlingsdetroit.com",
+}
+
+export const TRY_TO_ACOUSTIC = {
+  spotify:
+    "https://open.spotify.com/track/2CUBk8WLlK7U4WoEPlGpN3?si=99b28ed3edcb4289",
+  appleMusic:
+    "https://music.apple.com/us/album/try-to-have-a-good-time-acoustic-single/1793844062",
+  bandcamp:
+    "https://starlings-detroit.bandcamp.com/track/try-to-have-a-good-time-acoustic",
 }

@@ -11,7 +11,7 @@ interface ShowsSectionProps {
 const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
   return (
     <section className="flex w-full flex-col items-center gap-6">
-      <h2 className="self-start text-4xl">SHOWS</h2>
+      <h2 className="self-center text-4xl">SHOWS</h2>
       <ToggleGroup className="self-start" type="single" defaultValue="upcoming">
         <ToggleGroupItem
           variant="outline"
