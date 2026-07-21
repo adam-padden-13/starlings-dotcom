@@ -7,12 +7,23 @@ import {
   DialogTrigger,
 } from "@/shadcn-components/ui/dialog"
 import MailingListSection from "./MailingListSection"
+import { useState } from "react"
+import { Button } from "@/shadcn-components/ui/button"
 
-const SignUpModal = () => {
+interface SignUpModalProps {
+  handleSuccess: () => void
+}
+
+const SignUpModal = ({ handleSuccess }: SignUpModalProps) => {
+  const [open, setOpen] = useState(false)
+
   return (
-    <Dialog>
-      <DialogTrigger className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90">
-        SIGN UP
+    <Dialog open={open} onOpenChange={setOpen}>
+      <DialogTrigger
+        asChild
+        className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
+      >
+        <Button>Sign Up</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
@@ -21,7 +32,12 @@ const SignUpModal = () => {
             Sign up for updates and sneak peaks
           </DialogDescription>
         </DialogHeader>
-        <MailingListSection />
+        <MailingListSection
+          closeDialog={() => {
+            handleSuccess()
+            setOpen(false)
+          }}
+        />
       </DialogContent>
     </Dialog>
   )
