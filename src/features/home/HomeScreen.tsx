@@ -8,13 +8,19 @@ import mainPhoto from "@/assets/nick-1.jpg"
 import mainPhoto2 from "@/assets/nick-3.jpg"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
+import QRScanModal from "./components/QRScanModal"
 
-const HomeScreen = () => {
+interface HomeScreenProps {
+  isQRPath: boolean
+}
+
+const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [showPastShows, setShowPastShows] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
 
   return (
     <section className="flex flex-col items-center justify-center gap-6">
+      {isQRPath && <QRScanModal />}
       <div className="relative md:hidden">
         <img
           src={mainPhoto}

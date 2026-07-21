@@ -6,7 +6,7 @@ export function App() {
   return (
     <main className="mx-auto flex min-h-svh max-w-280 flex-col gap-6 px-5 pt-4 pb-4">
       <Header />
-      <HomeScreen />
+      <HomeScreen isQRPath={location.pathname === "/qr-scan" ? true : false} />
       <Footer />
     </main>
   )

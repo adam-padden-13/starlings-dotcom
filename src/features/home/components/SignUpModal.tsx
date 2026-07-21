@@ -6,7 +6,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/shadcn-components/ui/dialog"
-import MailingListSection from "./MailingListSection"
+import MailingListSection from "../sections/MailingListSection"
 import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
 
