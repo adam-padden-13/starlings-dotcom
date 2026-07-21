@@ -23,7 +23,7 @@ const SignUpModal = ({ handleSuccess }: SignUpModalProps) => {
         asChild
         className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
       >
-        <Button>Sign Up</Button>
+        <Button>Sign Up For Mailing List</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
