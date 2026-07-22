@@ -9,6 +9,8 @@ import mainPhoto2 from "@/assets/nick-3.jpg"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
 import QRScanModal from "./components/QRScanModal"
+import { ref } from "firebase/storage"
+import { storage } from "@/firebase"
 
 interface HomeScreenProps {
   isQRPath: boolean
@@ -17,6 +19,9 @@ interface HomeScreenProps {
 const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [showPastShows, setShowPastShows] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
+
+  const nickRef = ref(storage, "photos/nick.jpg")
+  console.log(nickRef)
 
   return (
     <section className="flex flex-col items-center justify-center gap-6">
