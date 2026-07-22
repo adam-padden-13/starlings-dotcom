@@ -23,9 +23,8 @@ const QRScanModal = () => {
             show.
             <br />
             <br />
-            Many song we play live have not been recorded yet, but will be soon.
-            In the meantime, open the audio player to checkout some of our
-            unreleased material.
+            Open the audio player to checkout some of our unreleased material
+            that we have been playing live.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
