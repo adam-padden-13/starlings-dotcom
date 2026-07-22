@@ -23,16 +23,16 @@ const QRScanModal = () => {
             show.
             <br />
             <br />
-            We're currently in the studio recording some of the newer songs in
-            our set. In the meantime follow the link below to hear demos. They
-            rock.
+            Many song we play live have not been recorded yet, but will be soon.
+            In the meantime, open the audio player to checkout some of our
+            unreleased material.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
           <Button variant="outline" onClick={() => setOpen(false)}>
             Close
           </Button>
-          <Button>Listen {<RiArrowRightLine />} </Button>
+          <Button>Open Audio Player {<RiArrowRightLine />} </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>
