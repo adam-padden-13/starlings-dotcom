@@ -2,14 +2,14 @@ import { Separator } from "@/components/ui/separator"
 import ShowsSection from "./sections/ShowsSection"
 import SignUpModal from "./components/SignUpModal"
 import { pastShows, upcomingShows } from "@/app/constants/shows-data"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MusicSection from "../music/MusicSection"
 import mainPhoto from "@/assets/nick-1.jpg"
 import mainPhoto2 from "@/assets/nick-3.jpg"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
 import QRScanModal from "./components/QRScanModal"
-import { ref } from "firebase/storage"
+import { getDownloadURL, ref } from "firebase/storage"
 import { storage } from "@/firebase"
 
 interface HomeScreenProps {
@@ -21,7 +21,10 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [successAlert, setSuccessAlert] = useState(false)
 
   const nickRef = ref(storage, "photos/nick.jpg")
-  console.log(nickRef)
+
+  useEffect(() => {
+    getDownloadURL(nickRef)
+  }, [])
 
   return (
     <section className="flex flex-col items-center justify-center gap-6">
