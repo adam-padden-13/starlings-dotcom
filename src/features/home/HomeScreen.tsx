@@ -46,7 +46,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
         <Alert className="w-70 gap-2 border-green-500 p-3">
           <div className="flex flex-row items-center gap-3">
             <RiCheckboxCircleLine className="text-green-500" size={20} />
-            <AlertTitle className="text-xs">Success</AlertTitle>
+            <AlertTitle className="text-xs">Thank you!</AlertTitle>
           </div>
           <AlertDescription className="text-[10px]">
             You're on the list, stay tuned for updates.
