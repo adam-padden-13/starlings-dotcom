@@ -4,7 +4,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
+} from "@/shadcn-components/ui/card"
 import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 import tryToArtwork from "@/assets/try-to-acoustic.png"
 import { TRY_HARD_TOWN_EP, TRY_TO_ACOUSTIC } from "@/app/constants/urls"

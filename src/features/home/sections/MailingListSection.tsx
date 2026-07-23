@@ -1,9 +1,13 @@
 import { Button } from "@/shadcn-components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/components/ui/field"
-import { Input } from "@/components/ui/input"
+import { Field, FieldGroup, FieldLabel } from "@/shadcn-components/ui/field"
+import { Input } from "@/shadcn-components/ui/input"
 import React, { useState } from "react"
-import { Spinner } from "@/components/ui/spinner"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Spinner } from "@/shadcn-components/ui/spinner"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/shadcn-components/ui/alert"
 import { RiErrorWarningLine } from "@remixicon/react"
 
 const SCRIPT_URL = import.meta.env.VITE_MAILING_LIST_SCRIPT

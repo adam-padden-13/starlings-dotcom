@@ -1,4 +1,4 @@
-import { Separator } from "@/components/ui/separator"
+import { Separator } from "@/shadcn-components/ui/separator"
 import ShowsSection from "./sections/ShowsSection"
 import SignUpModal from "./components/SignUpModal"
 import { pastShows, upcomingShows } from "@/app/constants/shows-data"
@@ -6,7 +6,11 @@ import { useState } from "react"
 import MusicSection from "../music/MusicSection"
 import MOBILE_HERO from "@/assets/hero-mobile.jpg"
 import DESKTOP_HERO from "@/assets/hero-desktop.jpg"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+} from "@/shadcn-components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
 import QRScanModal from "./components/QRScanModal"
 interface HomeScreenProps {
