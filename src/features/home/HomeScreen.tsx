@@ -4,12 +4,11 @@ import SignUpModal from "./components/SignUpModal"
 import { pastShows, upcomingShows } from "@/app/constants/shows-data"
 import { useState } from "react"
 import MusicSection from "../music/MusicSection"
-import mainPhoto from "@/assets/nick-1.jpg"
-import mainPhoto2 from "@/assets/nick-3.jpg"
+import MOBILE_HERO from "@/assets/hero-mobile.jpg"
+import DESKTOP_HERO from "@/assets/hero-desktop.jpg"
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
 import QRScanModal from "./components/QRScanModal"
-
 interface HomeScreenProps {
   isQRPath: boolean
 }
@@ -23,7 +22,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
       {isQRPath && <QRScanModal />}
       <div className="relative md:hidden">
         <img
-          src={mainPhoto}
+          src={MOBILE_HERO}
           alt="Nick & Adam from Starlings. Photographer: Kris Herrmann"
           className="max-w-70"
         />
@@ -33,7 +32,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
       </div>
       <div className="relative hidden md:block">
         <img
-          src={mainPhoto2}
+          src={DESKTOP_HERO}
           alt="Nick from Starlings. Photographer: Alex Flegal"
           className="max-w-160"
         />
