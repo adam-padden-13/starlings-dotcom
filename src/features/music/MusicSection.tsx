@@ -15,7 +15,7 @@ const MusicSection = () => {
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">MUSIC</h2>
       <section className="flex w-full flex-col items-center justify-center gap-6 md:flex-row md:items-baseline md:gap-10">
-        <Card>
+        <Card className="shadow-md">
           <img
             src={tryHardTownArtwork}
             alt="Try Hard Town EP"
@@ -33,7 +33,7 @@ const MusicSection = () => {
             />
           </CardFooter>
         </Card>
-        <Card>
+        <Card className="shadow-md">
           <img
             src={tryToArtwork}
             alt="Try To (Have a Good Time) artwork"
