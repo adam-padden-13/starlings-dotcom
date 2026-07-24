@@ -2,17 +2,19 @@ import { RiPauseCircleLine, RiPlayCircleLine } from "@remixicon/react"
 import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 import type { Song } from "@/app/types/Song"
 
-interface FooterPlayerProps {
+interface NowPlayingContainerProps {
   songs: Song[]
   isPlaying: boolean
   togglePlayPause: () => void
+  showButton: boolean
 }
 
-const FooterPlayer = ({
+const NowPlayingContainer = ({
   songs,
   isPlaying,
   togglePlayPause,
-}: FooterPlayerProps) => {
+  showButton,
+}: NowPlayingContainerProps) => {
   return (
     <div className="flex items-center justify-between">
       <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-10" />
@@ -23,21 +25,25 @@ const FooterPlayer = ({
           </span>
         )}
       </div>
-      {isPlaying ? (
-        <RiPauseCircleLine
-          aria-label="pause music"
-          size={50}
-          onClick={togglePlayPause}
-        />
+      {showButton ? (
+        isPlaying ? (
+          <RiPauseCircleLine
+            aria-label="pause music"
+            size={50}
+            onClick={togglePlayPause}
+          />
+        ) : (
+          <RiPlayCircleLine
+            aria-label="play music"
+            size={50}
+            onClick={togglePlayPause}
+          />
+        )
       ) : (
-        <RiPlayCircleLine
-          aria-label="play music"
-          size={50}
-          onClick={togglePlayPause}
-        />
+        <></>
       )}
     </div>
   )
 }
 
-export default FooterPlayer
+export default NowPlayingContainer
