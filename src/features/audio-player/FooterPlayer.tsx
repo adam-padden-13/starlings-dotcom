@@ -1,19 +1,27 @@
 import { RiPauseCircleLine, RiPlayCircleLine } from "@remixicon/react"
 import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
+import type { Song } from "@/app/types/Song"
 
 interface FooterPlayerProps {
+  songs: Song[]
   isPlaying: boolean
   togglePlayPause: () => void
 }
 
-const FooterPlayer = ({ isPlaying, togglePlayPause }: FooterPlayerProps) => {
+const FooterPlayer = ({
+  songs,
+  isPlaying,
+  togglePlayPause,
+}: FooterPlayerProps) => {
   return (
     <div className="flex items-center justify-between">
       <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-10" />
       <div className="w-full overflow-hidden whitespace-nowrap">
-        <span className="inline-block animate-marquee text-sm md:animate-none md:p-2">
-          Grasping Reaching - Demo Drop #1 - Starlings
-        </span>
+        {songs && songs[0] && (
+          <span className="inline-block animate-marquee text-sm md:animate-none md:p-2">
+            {`${songs[0].title} - ${songs[0].collectionName} - Starlings`}
+          </span>
+        )}
       </div>
       {isPlaying ? (
         <RiPauseCircleLine
