@@ -7,7 +7,7 @@ interface NowPlayingContainerProps {
   isPlaying: boolean
   togglePlayPause: () => void
   showButton: boolean
-  openDrawer: () => void
+  toggleDrawer: () => void
 }
 
 const NowPlayingContainer = ({
@@ -15,45 +15,37 @@ const NowPlayingContainer = ({
   isPlaying,
   togglePlayPause,
   showButton,
-  openDrawer,
+  toggleDrawer,
 }: NowPlayingContainerProps) => {
   return (
     <div
       className="flex items-center justify-between bg-background-alt text-[12px]"
-      onClick={openDrawer}
+      onClick={toggleDrawer}
     >
       <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-8" />
 
       {song && (
-        <span className="inline-block h-10 w-full animate-marquee overflow-hidden whitespace-nowrap md:animate-none md:p-2">
+        <span className="inline-block w-full animate-marquee overflow-hidden text-center whitespace-nowrap md:animate-none md:p-2">
           {`${song.title} - ${song.collectionName}`}
         </span>
       )}
       {showButton ? (
         isPlaying ? (
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-full p-2 hover:bg-muted/20 focus:ring-2 focus:ring-ring focus:outline-none"
+          <RiPauseCircleLine
+            size={48}
             onClick={(e) => {
               e.stopPropagation()
               togglePlayPause()
             }}
-            aria-label="pause music"
-          >
-            <RiPauseCircleLine size={44} />
-          </button>
+          />
         ) : (
-          <button
-            type="button"
-            className="inline-flex items-center justify-center rounded-full p-2 hover:bg-muted/20 focus:ring-2 focus:ring-ring focus:outline-none"
+          <RiPlayCircleLine
+            size={48}
             onClick={(e) => {
               e.stopPropagation()
               togglePlayPause()
             }}
-            aria-label="play music"
-          >
-            <RiPlayCircleLine size={44} />
-          </button>
+          />
         )
       ) : null}
     </div>

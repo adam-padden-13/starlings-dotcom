@@ -16,23 +16,24 @@ import {
   RiVolumeUpLine,
 } from "@remixicon/react"
 import type H5AudioPlayer from "react-h5-audio-player"
-import { useAudioPlayer } from "./stores/audioPlayerStore"
+import { useAudioPlayer, PlayerSnapPoints } from "./stores/audioPlayerStore"
 import SongItem from "./SongItem"
 
-const SnapPoints = {
-  sm: "80px",
-  lg: "500px",
-}
-
-const snapPoints = [SnapPoints.sm, SnapPoints.lg]
+const snapPoints = [PlayerSnapPoints.sm, PlayerSnapPoints.lg]
 
 interface AudioPlayerContainerProps {
   resolvedTheme: "light" | "dark"
 }
 
 const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
-  const { currentSong, songs, setSongs, setCurrentSong } = useAudioPlayer()
-  const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
+  const {
+    currentSong,
+    songs,
+    setSongs,
+    setCurrentSong,
+    playerSnap,
+    setPlayerSnap,
+  } = useAudioPlayer()
   const [isOpen, setIsOpen] = useState(true)
   const [isPlaying, setIsPlaying] = useState(true)
 
@@ -50,8 +51,8 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
   return (
     <Drawer.Root
       snapPoints={snapPoints}
-      activeSnapPoint={snap}
-      setActiveSnapPoint={setSnap}
+      activeSnapPoint={playerSnap}
+      setActiveSnapPoint={setPlayerSnap}
       modal={false}
       open={isOpen}
       onOpenChange={setIsOpen}
@@ -65,20 +66,26 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
       <Drawer.Portal>
         <Drawer.Content
           data-testid="content"
-          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] flex-col gap-4 rounded-xl border bg-background-alt px-2 py-1 shadow-xl shadow-blue-700"
+          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] max-w-4xl flex-col gap-4 rounded-xl border bg-background-alt px-2 py-1 shadow-xl shadow-blue-700 md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
         >
           {currentSong ? (
             <>
               <NowPlayingContainer
                 song={currentSong}
                 isPlaying={isPlaying}
-                showButton={snap === SnapPoints.sm && !!currentSong}
+                showButton={playerSnap === PlayerSnapPoints.sm && !!currentSong}
                 togglePlayPause={() => {
                   if (audioPlayerRef.current?.audio.current.paused)
                     audioPlayerRef.current?.audio.current.play()
                   else audioPlayerRef.current?.audio.current.pause()
                 }}
-                openDrawer={() => setSnap(SnapPoints.lg)}
+                toggleDrawer={() =>
+                  setPlayerSnap(
+                    playerSnap === PlayerSnapPoints.sm
+                      ? PlayerSnapPoints.lg
+                      : PlayerSnapPoints.sm
+                  )
+                }
               />
               <AudioPlayer
                 ref={audioPlayerRef}
@@ -90,7 +97,6 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
                 onCanPlay={(e) => {
-                  console.log("can play")
                   audioPlayerRef.current?.audio.current.play()
                 }}
                 onPlayError={(e) => console.log("onPlayError")}
@@ -138,25 +144,25 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
             </>
           ) : (
             <>
-              {snap === SnapPoints.sm && (
+              {playerSnap === PlayerSnapPoints.sm && (
                 <>
                   <div className="mt-1 w-[40%] self-center border border-muted-foreground" />
                   <span
-                    onClick={() => setSnap(SnapPoints.lg)}
+                    onClick={() => setPlayerSnap(PlayerSnapPoints.lg)}
                     className="text-center text-[12px]"
                   >
                     Tap or drag to open player
                   </span>
                 </>
               )}
-              {snap === SnapPoints.lg && (
+              {playerSnap === PlayerSnapPoints.lg && (
                 <span mt-1 className="text-center text-[12px]">
                   Select a song to play
                 </span>
               )}
             </>
           )}
-          {snap === SnapPoints.lg && (
+          {playerSnap === PlayerSnapPoints.lg && (
             <section className="flex flex-col gap-2">
               {songs.length > 0 &&
                 songs.map((song) => (
