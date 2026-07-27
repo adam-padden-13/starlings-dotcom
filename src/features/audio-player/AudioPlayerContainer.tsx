@@ -1,7 +1,6 @@
-import { createRef, useEffect, useState, type Ref } from "react"
+import { createRef, useEffect, useRef, useState, type Ref } from "react"
 import { Drawer } from "vaul"
 import NowPlayingContainer from "./NowPlayingContainer"
-import type { Song } from "@/app/types/Song"
 import { fetchSongs } from "@/service/AudioPlayerService"
 import AudioPlayer from "react-h5-audio-player"
 import "react-h5-audio-player/lib/styles.css"
@@ -17,26 +16,34 @@ import {
   RiVolumeUpLine,
 } from "@remixicon/react"
 import type H5AudioPlayer from "react-h5-audio-player"
+import { useAudioPlayer } from "./stores/audioPlayerStore"
+import SongItem from "./SongItem"
 
-const snapPoints = ["80px", "200px", "500px"]
+const SnapPoints = {
+  sm: "70px",
+  md: "200px",
+  lg: "500px",
+}
+
+const snapPoints = [SnapPoints.sm, SnapPoints.md, SnapPoints.lg]
 
 interface AudioPlayerContainerProps {
   resolvedTheme: "light" | "dark"
 }
 
 const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
+  const { currentSong, songs, setSongs, setCurrentSong } = useAudioPlayer()
   const [snap, setSnap] = useState<number | string | null>(snapPoints[0])
   const [isOpen, setIsOpen] = useState(true)
   const [isPlaying, setIsPlaying] = useState(true)
 
-  const [songs, setSongs] = useState<Song[]>([])
-
-  const audioPlayerRef: Ref<H5AudioPlayer> | undefined = createRef()
+  const audioPlayerRef = useRef<H5AudioPlayer>(null)
 
   useEffect(() => {
     fetchSongs().then((response) => {
       if (response && response?.length > 0) {
         setSongs(response)
+        // setCurrentSong(response[0])
       }
     })
   }, [])
@@ -59,12 +66,12 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
       <Drawer.Portal>
         <Drawer.Content
           data-testid="content"
-          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] flex-col rounded-xl border bg-background p-2 shadow-xl shadow-blue-700"
+          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] flex-col gap-4 rounded-xl border bg-background-alt p-1 shadow-xl shadow-blue-700"
         >
           <NowPlayingContainer
-            songs={songs}
+            song={currentSong}
             isPlaying={isPlaying}
-            showButton={snap === "80px"}
+            showButton={snap === SnapPoints.sm}
             togglePlayPause={() => {
               if (audioPlayerRef.current?.audio.current.paused)
                 audioPlayerRef.current?.audio.current.play()
@@ -77,10 +84,14 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
               style={{
                 background: resolvedTheme === "dark" ? "black" : "white",
               }}
-              className="mt-4 rounded-lg border border-muted"
-              src={songs[0].cloudAudioURL}
+              className="rounded-lg border border-muted"
+              src={currentSong?.cloudAudioURL}
               onPlay={() => setIsPlaying(true)}
               onPause={() => setIsPlaying(false)}
+              onCanPlay={(e) => {
+                console.log("can play")
+                audioPlayerRef.current?.audio.current.play()
+              }}
               onPlayError={(e) => console.log("onPlayError")}
               preload="none"
               autoPlay={true}
@@ -121,6 +132,20 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
                 ),
               }}
             />
+          )}
+          {snap === SnapPoints.lg && (
+            <section className="flex flex-col gap-2">
+              {songs.length > 0 &&
+                songs.map((song) => (
+                  <SongItem
+                    key={song.id}
+                    song={song}
+                    selectSong={() => {
+                      setCurrentSong(song)
+                    }}
+                  />
+                ))}
+            </section>
           )}
         </Drawer.Content>
       </Drawer.Portal>

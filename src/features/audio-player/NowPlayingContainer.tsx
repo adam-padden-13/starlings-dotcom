@@ -3,25 +3,25 @@ import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 import type { Song } from "@/app/types/Song"
 
 interface NowPlayingContainerProps {
-  songs: Song[]
+  song: Song | undefined
   isPlaying: boolean
   togglePlayPause: () => void
   showButton: boolean
 }
 
 const NowPlayingContainer = ({
-  songs,
+  song,
   isPlaying,
   togglePlayPause,
   showButton,
 }: NowPlayingContainerProps) => {
   return (
-    <div className="flex items-center justify-between">
-      <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-10" />
+    <div className="flex items-center justify-between bg-background-alt">
+      <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-8" />
       <div className="w-full overflow-hidden whitespace-nowrap">
-        {songs && songs[0] && (
+        {song && (
           <span className="inline-block animate-marquee text-sm md:animate-none md:p-2">
-            {`${songs[0].title} - ${songs[0].collectionName} - Starlings`}
+            {`${song.title} - ${song.collectionName} - Starlings`}
           </span>
         )}
       </div>
@@ -29,13 +29,13 @@ const NowPlayingContainer = ({
         isPlaying ? (
           <RiPauseCircleLine
             aria-label="pause music"
-            size={50}
+            size={40}
             onClick={togglePlayPause}
           />
         ) : (
           <RiPlayCircleLine
             aria-label="play music"
-            size={50}
+            size={40}
             onClick={togglePlayPause}
           />
         )
