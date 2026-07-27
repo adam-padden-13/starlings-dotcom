@@ -96,10 +96,10 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
                 src={currentSong?.cloudAudioURL}
                 onPlay={() => setIsPlaying(true)}
                 onPause={() => setIsPlaying(false)}
-                onCanPlay={(e) => {
+                onCanPlay={() => {
                   audioPlayerRef.current?.audio.current.play()
                 }}
-                onPlayError={(e) => console.log("onPlayError")}
+                onPlayError={() => console.log("onPlayError")}
                 preload="none"
                 autoPlay={true}
                 // showSkipControls={true}
