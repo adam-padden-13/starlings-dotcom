@@ -7,6 +7,7 @@ interface NowPlayingContainerProps {
   isPlaying: boolean
   togglePlayPause: () => void
   showButton: boolean
+  openDrawer: () => void
 }
 
 const NowPlayingContainer = ({
@@ -14,34 +15,47 @@ const NowPlayingContainer = ({
   isPlaying,
   togglePlayPause,
   showButton,
+  openDrawer,
 }: NowPlayingContainerProps) => {
   return (
-    <div className="flex items-center justify-between bg-background-alt">
+    <div
+      className="flex items-center justify-between bg-background-alt text-[12px]"
+      onClick={openDrawer}
+    >
       <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-8" />
-      <div className="w-full overflow-hidden whitespace-nowrap">
-        {song && (
-          <span className="inline-block animate-marquee text-sm md:animate-none md:p-2">
-            {`${song.title} - ${song.collectionName} - Starlings`}
-          </span>
-        )}
-      </div>
+
+      {song && (
+        <span className="inline-block h-10 w-full animate-marquee overflow-hidden whitespace-nowrap md:animate-none md:p-2">
+          {`${song.title} - ${song.collectionName}`}
+        </span>
+      )}
       {showButton ? (
         isPlaying ? (
-          <RiPauseCircleLine
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full p-2 hover:bg-muted/20 focus:ring-2 focus:ring-ring focus:outline-none"
+            onClick={(e) => {
+              e.stopPropagation()
+              togglePlayPause()
+            }}
             aria-label="pause music"
-            size={40}
-            onClick={togglePlayPause}
-          />
+          >
+            <RiPauseCircleLine size={44} />
+          </button>
         ) : (
-          <RiPlayCircleLine
+          <button
+            type="button"
+            className="inline-flex items-center justify-center rounded-full p-2 hover:bg-muted/20 focus:ring-2 focus:ring-ring focus:outline-none"
+            onClick={(e) => {
+              e.stopPropagation()
+              togglePlayPause()
+            }}
             aria-label="play music"
-            size={40}
-            onClick={togglePlayPause}
-          />
+          >
+            <RiPlayCircleLine size={44} />
+          </button>
         )
-      ) : (
-        <></>
-      )}
+      ) : null}
     </div>
   )
 }
