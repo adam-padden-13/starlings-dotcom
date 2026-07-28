@@ -26,7 +26,9 @@ const SongItem = ({ song, selectSong }: SongItemProps) => {
       className={`bg-background ${isSelected ? "border-accent-foreground" : "border-accent"} shadow-sm`}
     >
       <ItemContent className={`w-full`} onClick={selectSong}>
-        <ItemTitle>{song.title}</ItemTitle>
+        <ItemTitle>
+          {song.title} - {song.type.toUpperCase()}
+        </ItemTitle>
         <ItemDescription>{song.collectionName}</ItemDescription>
       </ItemContent>
       <ItemActions>

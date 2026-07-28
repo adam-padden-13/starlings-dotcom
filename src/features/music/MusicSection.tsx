@@ -69,7 +69,7 @@ const MusicSection = () => {
         </CardHeader>
         <CardFooter className="flex w-full justify-center gap-4">
           <Button
-            className="h-12 w-full border-primary bg-highlight text-sm dark:border-accent dark:bg-highlight dark:text-accent"
+            className="dark:bg-highlight h-12 w-full border-primary bg-mint-green text-sm dark:border-accent dark:text-accent"
             variant="outline"
             onClick={openPlayer}
           >

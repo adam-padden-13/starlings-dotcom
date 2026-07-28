@@ -3,6 +3,6 @@ export interface Song {
   title: string
   cloudStoragePath: string
   cloudAudioURL: string
-  isDemo: boolean
+  type: "demo" | "live"
   collectionName: string
 }
