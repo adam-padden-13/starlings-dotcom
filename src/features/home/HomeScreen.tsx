@@ -2,7 +2,7 @@ import { Separator } from "@/shadcn-components/ui/separator"
 import ShowsSection from "./sections/ShowsSection"
 import SignUpModal from "./components/SignUpModal"
 import { pastShows, upcomingShows } from "@/app/constants/shows-data"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import MusicSection from "../music/MusicSection"
 import MOBILE_HERO from "@/assets/hero-mobile.jpg"
 import DESKTOP_HERO from "@/assets/hero-desktop.jpg"
@@ -13,6 +13,9 @@ import {
 } from "@/shadcn-components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
 import QRScanModal from "./components/QRScanModal"
+import { fetchPhotoUrls } from "@/service/GalleryService"
+import PhotoCarousel from "./components/PhotoCarousel"
+import PhotoCredit from "@/app/components/PhotoCredit"
 interface HomeScreenProps {
   isQRPath: boolean
 }
@@ -20,6 +23,11 @@ interface HomeScreenProps {
 const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [showPastShows, setShowPastShows] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
+  const [photoURLs, setPhotoURLs] = useState<string[]>([])
+
+  useEffect(() => {
+    fetchPhotoUrls().then((res) => setPhotoURLs(res))
+  }, [])
 
   return (
     <section className="flex flex-col items-center justify-center gap-6">
@@ -30,9 +38,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
           alt="Nick & Adam from Starlings. Photographer: Kris Herrmann"
           className="max-w-70"
         />
-        <span className="absolute right-1 bottom-1 rounded-sm bg-black px-1 text-[8px] text-gray-300">
-          © Kris Herrmann
-        </span>
+        <PhotoCredit name="Kris Herrmann" />
       </div>
       <div className="relative hidden md:block">
         <img
@@ -40,9 +46,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
           alt="Nick from Starlings. Photographer: Alex Flegal"
           className="max-w-160"
         />
-        <span className="absolute right-1 bottom-1 rounded-sm bg-black px-1 text-[8px] text-gray-300">
-          © Alex Flegal
-        </span>
+        <PhotoCredit name="Alex Flegal" />
       </div>
 
       {successAlert ? (
@@ -68,6 +72,10 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
         }}
       />
       <MusicSection />
+      <section className="flex w-full flex-col items-center gap-4">
+        <h2 className="self-center text-4xl">PHOTOS</h2>
+        <PhotoCarousel photoURLs={photoURLs} />
+      </section>
     </section>
   )
 }
