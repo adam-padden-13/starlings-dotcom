@@ -1,6 +1,8 @@
 export interface Song {
+  id: number
   title: string
-  streamingLink: string
-  demoLink?: string
-  lyrics?: string
+  cloudStoragePath: string
+  cloudAudioURL: string
+  type: "demo" | "live"
+  collectionName: string
 }

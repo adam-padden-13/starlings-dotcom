@@ -5,11 +5,11 @@ import {
   ItemContent,
   ItemDescription,
   ItemTitle,
-} from "@/components/ui/item"
+} from "@/shadcn-components/ui/item"
 import { Button } from "@/shadcn-components/ui/button"
 const ShowItem = ({ show }: { show: Show }) => {
   return (
-    <Item variant="outline">
+    <Item variant="outline" className="shadow-md">
       <ItemContent className="w-full">
         <ItemTitle>
           {show.date.toDateString()} |{" "}

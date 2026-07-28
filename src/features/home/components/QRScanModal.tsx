@@ -9,13 +9,17 @@ import {
 import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
 import { RiArrowRightLine } from "@remixicon/react"
+import { useAudioPlayer } from "@/features/audio-player/stores/audioPlayerStore"
+import { useNavigate } from "react-router"
 
 const QRScanModal = () => {
   const [open, setOpen] = useState(true)
+  const { openPlayer } = useAudioPlayer()
+  const navigate = useNavigate()
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent>
+      <DialogContent showCloseButton={false}>
         <DialogHeader>
           <DialogTitle>Want a sneak peak?</DialogTitle>
           <DialogDescription>
@@ -28,10 +32,24 @@ const QRScanModal = () => {
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline" onClick={() => setOpen(false)}>
+          <Button
+            variant="outline"
+            onClick={() => {
+              navigate("/")
+              setOpen(false)
+            }}
+          >
             Close
           </Button>
-          <Button>Open Audio Player {<RiArrowRightLine />} </Button>
+          <Button
+            onClick={() => {
+              navigate("/")
+              openPlayer()
+              setOpen(false)
+            }}
+          >
+            Open Audio Player {<RiArrowRightLine />}{" "}
+          </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

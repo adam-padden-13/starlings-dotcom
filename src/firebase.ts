@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app"
 import { ReCaptchaV3Provider, initializeAppCheck } from "firebase/app-check"
+import { initializeFirestore } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -19,9 +20,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig)
-export const storage = getStorage(app)
 
-self.FIREBASE_APPCHECK_DEBUG_TOKEN = true
+if (import.meta.env.DEV)
+  self.FIREBASE_APPCHECK_DEBUG_TOKEN = import.meta.env.VITE_FIREBASE_debugToken
 
 initializeAppCheck(app, {
   provider: new ReCaptchaV3Provider(import.meta.env.VITE_RECAPTCHA_KEY),
@@ -29,4 +30,9 @@ initializeAppCheck(app, {
   // Optional argument. If true, the SDK automatically refreshes App Check
   // tokens as needed.
   isTokenAutoRefreshEnabled: true,
+})
+
+export const storage = getStorage(app)
+export const store = initializeFirestore(app, {
+  experimentalAutoDetectLongPolling: true,
 })

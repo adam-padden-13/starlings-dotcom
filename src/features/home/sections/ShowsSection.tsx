@@ -1,7 +1,10 @@
 import type { Show } from "@/app/types/Show"
-import { ItemGroup, ItemSeparator } from "@/components/ui/item"
+import { ItemGroup, ItemSeparator } from "@/shadcn-components/ui/item"
 import ShowItem from "../../shows/ShowItem"
-import { ToggleGroupItem, ToggleGroup } from "@/components/ui/toggle-group"
+import {
+  ToggleGroupItem,
+  ToggleGroup,
+} from "@/shadcn-components/ui/toggle-group"
 
 interface ShowsSectionProps {
   shows: Show[]
