@@ -67,7 +67,7 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
       <Drawer.Portal>
         <Drawer.Content
           data-testid="content"
-          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] max-w-4xl flex-col gap-4 rounded-xl border bg-background-alt px-2 py-1 shadow-xl shadow-electric-cyan md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
+          className="fixed inset-x-3 bottom-3 z-50 flex h-full max-h-[calc(97%-0.75rem)] max-w-4xl flex-col gap-4 rounded-xl border bg-background-alt px-2 py-1 shadow-audio-player md:top-1/2 md:left-1/2 md:-translate-x-1/2 md:-translate-y-1/2"
         >
           {currentSong ? (
             <>

@@ -59,6 +59,7 @@
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
   --animate-marquee: marquee 4s linear infinite alternate;
+  --shadow-audio-player: 0 4px 16px var(--color-electric-cyan);
 }
 
 :root {
