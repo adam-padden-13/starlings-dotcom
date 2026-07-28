@@ -19,7 +19,13 @@ const QRScanModal = () => {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogContent showCloseButton={false}>
+      <DialogContent
+        showCloseButton={false}
+        onInteractOutside={() => {
+          navigate("/")
+          setOpen(false)
+        }}
+      >
         <DialogHeader>
           <DialogTitle>Want a sneak peak?</DialogTitle>
           <DialogDescription>
