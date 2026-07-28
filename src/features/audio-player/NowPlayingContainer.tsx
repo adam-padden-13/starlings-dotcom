@@ -1,5 +1,4 @@
 import { RiPauseCircleLine, RiPlayCircleLine } from "@remixicon/react"
-import tryHardTownArtwork from "@/assets/try-hard-town-ep.png"
 import type { Song } from "@/app/types/Song"
 
 interface NowPlayingContainerProps {
@@ -22,10 +21,8 @@ const NowPlayingContainer = ({
       className="flex items-center justify-between bg-background-alt text-[12px]"
       onClick={toggleDrawer}
     >
-      <img src={tryHardTownArtwork} alt="Try Hard Town EP" className="w-8" />
-
       {song && (
-        <span className="inline-block w-full animate-marquee overflow-hidden text-center whitespace-nowrap md:animate-none md:p-2">
+        <span className="inline-block w-full overflow-hidden text-center text-pretty md:p-2">
           {`${song.title} - ${song.collectionName}`}
         </span>
       )}
