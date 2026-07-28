@@ -18,6 +18,7 @@ import {
 import type H5AudioPlayer from "react-h5-audio-player"
 import { useAudioPlayer, PlayerSnapPoints } from "./stores/audioPlayerStore"
 import SongItem from "./SongItem"
+import { sortSongs } from "./audio-player-util"
 
 const snapPoints = [PlayerSnapPoints.sm, PlayerSnapPoints.lg]
 
@@ -172,7 +173,7 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
           {playerSnap === PlayerSnapPoints.lg && (
             <section className="flex flex-col gap-2">
               {songs.length > 0 &&
-                songs.map((song) => (
+                sortSongs(songs).map((song) => (
                   <SongItem
                     key={song.id}
                     song={song}
