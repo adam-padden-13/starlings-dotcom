@@ -2,7 +2,7 @@ import type { Song } from "@/app/types/Song"
 import { create } from "zustand"
 
 export const PlayerSnapPoints = {
-  sm: "80px",
+  sm: "60px",
   lg: "500px",
 }
 

@@ -29,7 +29,7 @@ const NowPlayingContainer = ({
       {showButton ? (
         isPlaying ? (
           <RiPauseCircleLine
-            size={48}
+            size={40}
             onClick={(e) => {
               e.stopPropagation()
               togglePlayPause()
@@ -37,7 +37,7 @@ const NowPlayingContainer = ({
           />
         ) : (
           <RiPlayCircleLine
-            size={48}
+            size={40}
             onClick={(e) => {
               e.stopPropagation()
               togglePlayPause()
