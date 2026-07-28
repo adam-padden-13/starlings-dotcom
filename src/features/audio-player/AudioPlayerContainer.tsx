@@ -146,7 +146,7 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
           ) : (
             <>
               {playerSnap === PlayerSnapPoints.sm && (
-                <>
+                <div className="flex flex-col gap-2">
                   <div className="mt-1 w-[40%] self-center border border-muted-foreground" />
                   <span
                     onClick={() => setPlayerSnap(PlayerSnapPoints.lg)}
@@ -154,19 +154,18 @@ const AudioPlayerContainer = ({ resolvedTheme }: AudioPlayerContainerProps) => {
                   >
                     AUDIO PLAYER
                   </span>
-                </>
+                </div>
               )}
               {playerSnap === PlayerSnapPoints.lg && (
-                <>
+                <div className="flex flex-col gap-2">
                   <div className="mt-1 w-[40%] self-center border border-muted-foreground" />
-
                   <span
                     className="text-center text-[12px]"
                     onClick={() => setPlayerSnap(PlayerSnapPoints.sm)}
                   >
                     SELECT A SONG
                   </span>
-                </>
+                </div>
               )}
             </>
           )}
