@@ -24,11 +24,11 @@ const EmbeddedAudioPlayer = () => {
   }, [])
 
   return (
-    <Card className="w-full max-w-150 bg-accent shadow-md dark:shadow-sm dark:shadow-gray-400">
+    <Card className="w-full bg-accent shadow-md dark:shadow-sm dark:shadow-gray-400">
       <CardHeader>
         <CardTitle className="text-center text-lg">UNRELEASED MUSIC</CardTitle>
-        <CardDescription>
-          Here you will find demos, song sketches and live takes of songs.
+        <CardDescription className="text-center">
+          DEMOS | SONG SKETCHES | LIVE VERSIONS
         </CardDescription>
       </CardHeader>
       <CardContent>
