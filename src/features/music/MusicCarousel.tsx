@@ -20,7 +20,7 @@ import tryToArtwork from "@/assets/try-to-acoustic.png"
 
 const MusicCarousel = () => {
   return (
-    <Carousel className="w-full shadow-md md:hidden dark:shadow-sm dark:shadow-gray-400">
+    <Carousel className="w-full shadow-md sm:hidden dark:shadow-sm dark:shadow-gray-400">
       <CarouselContent>
         <CarouselItem className="relative flex justify-center">
           <Card>
