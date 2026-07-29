@@ -30,8 +30,8 @@ const PhotoCarousel = ({ photoURLs }: PhotoCarouselProps) => {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="max-sm:left-1 max-sm:text-accent" />
-      <CarouselNext className="max-sm:right-1 max-sm:text-accent" />
+      <CarouselPrevious className="max-sm:text-bg h-8 w-8 bg-accent max-sm:left-1" />
+      <CarouselNext className="max-sm:text-bg h-8 w-8 bg-accent max-sm:right-1" />
     </Carousel>
   )
 }
