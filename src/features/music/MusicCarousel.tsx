@@ -1,4 +1,3 @@
-import PhotoCredit from "@/app/components/PhotoCredit"
 import { TRY_HARD_TOWN_EP, TRY_TO_ACOUSTIC } from "@/app/constants/urls"
 import {
   Card,
