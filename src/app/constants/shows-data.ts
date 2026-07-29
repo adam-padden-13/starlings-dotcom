@@ -2,7 +2,7 @@ import type { Show } from "../types/Show"
 
 export const upcomingShows: Show[] = [
   {
-    date: new Date("2026-08-01T17:00:00"),
+    date: new Date("2026-08-01T18:00:00"),
     location: "Corktown, Detroit",
     venue: "Pig & Whiskey Festival",
     ticketLink: "https://pigandwhiskeycorktown.com/",

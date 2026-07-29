@@ -140,6 +140,7 @@
 @layer components {
   .rhap_time {
     color: var(--primary) !important;
+    font-size: 12px !important;
   }
 
   .rhap_progress-bar {

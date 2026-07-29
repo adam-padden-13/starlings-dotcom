@@ -6,7 +6,7 @@ import {
   ItemDescription,
   ItemTitle,
 } from "@/shadcn-components/ui/item"
-import { useAudioPlayer } from "./stores/audioPlayerStore"
+import { useAudioPlayer } from "../stores/audioPlayerStore"
 import { RiPlayCircleLine } from "@remixicon/react"
 import Wave from "@/assets/wave.svg?react"
 
@@ -23,7 +23,7 @@ const SongItem = ({ song, selectSong }: SongItemProps) => {
   return (
     <Item
       variant="outline"
-      className={`bg-background ${isSelected ? "border-accent-foreground" : "border-accent"} shadow-sm`}
+      className={`bg-background ${isSelected ? "border-accent-foreground" : "border-accent"} shadow-sm dark:shadow-xs dark:shadow-gray-400`}
     >
       <ItemContent className={`w-full`} onClick={selectSong}>
         <ItemTitle>

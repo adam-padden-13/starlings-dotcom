@@ -9,7 +9,10 @@ import {
 import { Button } from "@/shadcn-components/ui/button"
 const ShowItem = ({ show }: { show: Show }) => {
   return (
-    <Item variant="outline" className="shadow-md">
+    <Item
+      variant="outline"
+      className="shadow-md dark:shadow-xs dark:shadow-gray-400"
+    >
       <ItemContent className="w-full">
         <ItemTitle>
           {show.date.toDateString()} |{" "}
@@ -22,9 +25,11 @@ const ShowItem = ({ show }: { show: Show }) => {
         <ItemDescription>{show.venue}</ItemDescription>
       </ItemContent>
       <ItemActions>
-        <a target="_blank" href={show.ticketLink}>
-          <Button>TICKETS</Button>
-        </a>
+        {show.date.getTime() > Date.now() && (
+          <a target="_blank" href={show.ticketLink}>
+            <Button>TICKETS</Button>
+          </a>
+        )}
       </ItemActions>
     </Item>
   )

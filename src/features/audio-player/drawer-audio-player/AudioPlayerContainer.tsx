@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { Drawer } from "vaul"
-import NowPlayingContainer from "./NowPlayingContainer"
+import NowPlayingContainer from "../drawer-audio-player/NowPlayingContainer"
 import { fetchSongs } from "@/service/AudioPlayerService"
 import AudioPlayer from "react-h5-audio-player"
 import "react-h5-audio-player/lib/styles.css"
@@ -16,9 +16,12 @@ import {
   RiVolumeUpLine,
 } from "@remixicon/react"
 import type H5AudioPlayer from "react-h5-audio-player"
-import { useAudioPlayer, PlayerSnapPoints } from "./stores/audioPlayerStore"
-import SongItem from "./SongItem"
-import { sortSongs } from "./audio-player-util"
+import { useAudioPlayer, PlayerSnapPoints } from "../stores/audioPlayerStore"
+import SongItem from "../components/SongItem"
+import { sortSongs } from "../audio-player-util"
+
+// THIS COMPONENT IS CURRENTLY UNUSED
+// LEAVING JUST IN CASE
 
 const snapPoints = [PlayerSnapPoints.sm, PlayerSnapPoints.lg]
 
