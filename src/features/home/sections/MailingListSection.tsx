@@ -58,7 +58,7 @@ const MailingListSection = ({ closeDialog }: MailingListSectionProps) => {
         }
 
         setLoading(false)
-        logEvent(analytics, "mailing list - success")
+        logEvent(analytics, "mailing_list - success")
         closeDialog()
       } catch {
         setError(true)

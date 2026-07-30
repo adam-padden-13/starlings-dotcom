@@ -23,7 +23,7 @@ const SignUpModal = ({ handleSuccess }: SignUpModalProps) => {
     setOpen(nextOpen)
 
     if (!nextOpen) {
-      logEvent(analytics, "mailing list - dialog closed")
+      logEvent(analytics, "mailing_list - dialog_closed")
     }
   }
 
@@ -32,7 +32,7 @@ const SignUpModal = ({ handleSuccess }: SignUpModalProps) => {
       <DialogTrigger
         asChild
         onClick={() => {
-          logEvent(analytics, "mailing list - open dialog")
+          logEvent(analytics, "mailing_list - open_dialog")
         }}
         className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
       >
