@@ -3,6 +3,8 @@ import { initializeApp } from "firebase/app"
 import { ReCaptchaV3Provider, initializeAppCheck } from "firebase/app-check"
 import { initializeFirestore } from "firebase/firestore"
 import { getStorage } from "firebase/storage"
+import { getAnalytics } from "firebase/analytics"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -36,3 +38,4 @@ export const storage = getStorage(app)
 export const store = initializeFirestore(app, {
   experimentalAutoDetectLongPolling: true,
 })
+export const analytics = getAnalytics(app)

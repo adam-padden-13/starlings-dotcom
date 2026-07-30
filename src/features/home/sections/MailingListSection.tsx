@@ -1,5 +1,10 @@
 import { Button } from "@/shadcn-components/ui/button"
-import { Field, FieldGroup, FieldLabel } from "@/shadcn-components/ui/field"
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/shadcn-components/ui/field"
 import { Input } from "@/shadcn-components/ui/input"
 import React, { useState } from "react"
 import { Spinner } from "@/shadcn-components/ui/spinner"
@@ -9,6 +14,8 @@ import {
   AlertTitle,
 } from "@/shadcn-components/ui/alert"
 import { RiErrorWarningLine } from "@remixicon/react"
+import { logEvent } from "firebase/analytics"
+import { analytics } from "@/firebase"
 
 const SCRIPT_URL = import.meta.env.VITE_MAILING_LIST_SCRIPT
 
@@ -20,6 +27,7 @@ const MailingListSection = ({ closeDialog }: MailingListSectionProps) => {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [error, setError] = useState(false)
+  const [emailInvalid, setEmailInvalid] = useState(false)
   const [loading, setLoading] = useState(false)
 
   const reset = () => {
@@ -29,31 +37,43 @@ const MailingListSection = ({ closeDialog }: MailingListSectionProps) => {
   }
 
   const handleSignUp = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault()
-    setLoading(true)
-    setError(false)
+    if (isValidEmail(email)) {
+      e.preventDefault()
+      setEmailInvalid(false)
+      setLoading(true)
+      setError(false)
 
-    try {
-      const response = await fetch(SCRIPT_URL, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-        body: new URLSearchParams({ name, email }),
-      })
+      try {
+        const response = await fetch(SCRIPT_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: new URLSearchParams({ name, email }),
+        })
 
-      if (!response.ok) {
+        if (!response.ok) {
+          setError(true)
+          throw new Error(`Request failed with status ${response.status}`)
+        }
+
+        setLoading(false)
+        logEvent(analytics, "mailing list - success")
+        closeDialog()
+      } catch {
         setError(true)
-        throw new Error(`Request failed with status ${response.status}`)
+        setLoading(false)
       }
-
-      setLoading(false)
-      closeDialog()
-    } catch {
-      setError(true)
-      setLoading(false)
+    } else {
+      setEmailInvalid(true)
     }
   }
+
+  const isValidEmail = (email: string): boolean =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+
+  const disableSubmit =
+    loading || name === "" || email === "" || !isValidEmail(email)
 
   return (
     <FieldGroup>
@@ -75,6 +95,7 @@ const MailingListSection = ({ closeDialog }: MailingListSectionProps) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {emailInvalid && <FieldError>Enter a valid email address</FieldError>}
       </Field>
       {error && (
         <Alert className="w-fit gap-2 border-red-500 p-3">
@@ -96,7 +117,7 @@ const MailingListSection = ({ closeDialog }: MailingListSectionProps) => {
         >
           Reset
         </Button>
-        <Button onClick={handleSignUp} type="submit" disabled={loading}>
+        <Button onClick={handleSignUp} type="submit" disabled={disableSubmit}>
           {loading ? <Spinner /> : "Sign Up"}
         </Button>
       </Field>

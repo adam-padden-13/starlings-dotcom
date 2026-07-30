@@ -9,6 +9,8 @@ import {
 import MailingListSection from "../sections/MailingListSection"
 import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
+import { analytics } from "@/firebase"
+import { logEvent } from "firebase/analytics"
 
 interface SignUpModalProps {
   handleSuccess: () => void
@@ -17,10 +19,21 @@ interface SignUpModalProps {
 const SignUpModal = ({ handleSuccess }: SignUpModalProps) => {
   const [open, setOpen] = useState(false)
 
+  const handleOpenChange = (nextOpen: boolean) => {
+    setOpen(nextOpen)
+
+    if (!nextOpen) {
+      logEvent(analytics, "mailing list - dialog closed")
+    }
+  }
+
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger
         asChild
+        onClick={() => {
+          logEvent(analytics, "mailing list - open dialog")
+        }}
         className="mx-auto w-fit rounded-md bg-primary px-4 py-2 text-primary-foreground hover:bg-primary/90"
       >
         <Button>Sign Up For Mailing List</Button>

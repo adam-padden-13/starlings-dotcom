@@ -29,12 +29,12 @@ const QRScanModal = () => {
         <DialogHeader>
           <DialogTitle>Want a sneak peak?</DialogTitle>
           <DialogDescription>
-            If you've scanned this QR code chances are you saw us at a recent
-            show.
+            If you've scanned this QR code chances are you saw Starlings at a
+            recent show.
             <br />
             <br />
-            Open the audio player to checkout some of our unreleased material
-            that we have been playing live.
+            Open the audio player to checkout some of unreleased material that
+            they have been playing live.
           </DialogDescription>
         </DialogHeader>
         <DialogFooter>
