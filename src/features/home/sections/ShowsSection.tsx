@@ -5,6 +5,7 @@ import {
   ToggleGroupItem,
   ToggleGroup,
 } from "@/shadcn-components/ui/toggle-group"
+import { sortShows } from "@/lib/utils"
 
 interface ShowsSectionProps {
   shows: Show[]
@@ -12,6 +13,7 @@ interface ShowsSectionProps {
 }
 
 const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
+  const sortedShows = sortShows(shows).slice(0, 5)
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">SHOWS</h2>
@@ -32,8 +34,8 @@ const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
         </ToggleGroupItem>
       </ToggleGroup>
       <ItemGroup className="w-full">
-        {shows.map((show) => (
-          <ShowItem key={show.date.toLocaleDateString()} show={show} />
+        {sortedShows.map((show) => (
+          <ShowItem key={show.venue} show={show} />
         ))}
         <ItemSeparator />
       </ItemGroup>

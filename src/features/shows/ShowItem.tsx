@@ -7,7 +7,9 @@ import {
   ItemTitle,
 } from "@/shadcn-components/ui/item"
 import { Button } from "@/shadcn-components/ui/button"
+import { isFutureDate } from "@/lib/utils"
 const ShowItem = ({ show }: { show: Show }) => {
+  const showDate = new Date(show.date)
   return (
     <Item
       variant="outline"
@@ -15,8 +17,8 @@ const ShowItem = ({ show }: { show: Show }) => {
     >
       <ItemContent className="w-full">
         <ItemTitle>
-          {show.date.toDateString()} |{" "}
-          {show.date.toLocaleTimeString([], {
+          {showDate.toDateString()} |{" "}
+          {showDate.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
           })}
@@ -25,7 +27,7 @@ const ShowItem = ({ show }: { show: Show }) => {
         <ItemDescription>{show.venue}</ItemDescription>
       </ItemContent>
       <ItemActions>
-        {show.date.getTime() > Date.now() && (
+        {isFutureDate(showDate) && (
           <a target="_blank" href={show.ticketLink}>
             <Button>TICKETS</Button>
           </a>
