@@ -24,7 +24,10 @@ const EmbeddedAudioPlayer = () => {
   }, [])
 
   return (
-    <Card className="w-full bg-accent shadow-md dark:shadow-sm dark:shadow-gray-400">
+    <Card
+      className="w-full bg-accent shadow-md dark:shadow-sm dark:shadow-gray-400"
+      id="embedded-audio-player"
+    >
       <CardHeader>
         <CardTitle className="text-center text-lg">UNRELEASED MUSIC</CardTitle>
         <CardDescription className="text-center">

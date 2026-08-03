@@ -9,12 +9,10 @@ import {
 import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
 import { RiArrowRightLine } from "@remixicon/react"
-import { useAudioPlayer } from "@/features/audio-player/stores/audioPlayerStore"
 import { useNavigate } from "react-router"
 
 const QRScanModal = () => {
   const [open, setOpen] = useState(true)
-  const { openPlayer } = useAudioPlayer()
   const navigate = useNavigate()
 
   return (
@@ -33,7 +31,7 @@ const QRScanModal = () => {
             recent show.
             <br />
             <br />
-            Open the audio player to checkout some of unreleased material that
+            Checkout the audio player to hear some of unreleased material that
             they have been playing live.
           </DialogDescription>
         </DialogHeader>
@@ -50,7 +48,10 @@ const QRScanModal = () => {
           <Button
             onClick={() => {
               navigate("/")
-              openPlayer()
+              document.getElementById("embedded-audio-player")?.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+              })
               setOpen(false)
             }}
           >
