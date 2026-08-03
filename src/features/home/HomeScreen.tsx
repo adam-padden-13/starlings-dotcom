@@ -17,7 +17,7 @@ import PhotoCarousel from "./components/PhotoCarousel"
 import PhotoCredit from "@/app/components/PhotoCredit"
 import type { Show } from "@/app/types/Show"
 import { fetchShows } from "@/service/ShowService"
-import { isFutureDate } from "@/lib/utils"
+import { isFutureDate, sortShows } from "@/lib/utils"
 interface HomeScreenProps {
   isQRPath: boolean
 }
@@ -28,6 +28,9 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [photoURLs, setPhotoURLs] = useState<string[]>([])
   const [upcomingShows, setUpcomingShows] = useState<Show[]>([])
   const [pastShows, setPastShows] = useState<Show[]>([])
+
+  const sortedUpcomingShows = sortShows(upcomingShows)
+  const sortedPastShows = sortShows(pastShows).reverse()
 
   useEffect(() => {
     fetchPhotoUrls().then((res) => setPhotoURLs(res))
@@ -85,7 +88,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
 
       <Separator />
       <ShowsSection
-        shows={showPastShows ? pastShows : upcomingShows}
+        shows={showPastShows ? sortedPastShows : sortedUpcomingShows}
         toggleShows={(value) => {
           if (value === "past") setShowPastShows(true)
           else setShowPastShows(false)
