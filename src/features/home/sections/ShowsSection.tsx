@@ -5,6 +5,8 @@ import {
   ToggleGroupItem,
   ToggleGroup,
 } from "@/shadcn-components/ui/toggle-group"
+import { Button } from "@/shadcn-components/ui/button"
+import { useState } from "react"
 
 interface ShowsSectionProps {
   shows: Show[]
@@ -12,6 +14,14 @@ interface ShowsSectionProps {
 }
 
 const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
+  const [showAll, setShowAll] = useState(false)
+  const [selectedShowType, setSelectedShowType] = useState<"upcoming" | "past">(
+    "upcoming"
+  )
+
+  const showsToRender = showAll ? shows : shows.slice(0, 3)
+
+  const typeString = selectedShowType === "upcoming" ? "UPCOMING" : "PAST"
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">SHOWS</h2>
@@ -19,22 +29,36 @@ const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
         <ToggleGroupItem
           variant="outline"
           value="upcoming"
-          onClick={() => toggleShows("upcoming")}
+          onClick={() => {
+            toggleShows("upcoming")
+            setSelectedShowType("upcoming")
+          }}
         >
           Upcoming
         </ToggleGroupItem>
         <ToggleGroupItem
           variant={"outline"}
           value="past"
-          onClick={() => toggleShows("past")}
+          onClick={() => {
+            toggleShows("past")
+            setSelectedShowType("past")
+          }}
         >
           Past
         </ToggleGroupItem>
       </ToggleGroup>
       <ItemGroup className="w-full">
-        {shows.map((show) => (
-          <ShowItem key={show.date.toLocaleDateString()} show={show} />
+        {showsToRender.map((show) => (
+          <ShowItem key={show.venue} show={show} />
         ))}
+        {shows.length < 1 && (
+          <span className="text-xs">NO {typeString} SHOWS</span>
+        )}
+        {shows.length > 4 && (
+          <Button variant="secondary" onClick={() => setShowAll(!showAll)}>
+            {!showAll ? "SHOW MORE" : "SHOW LESS"}
+          </Button>
+        )}
         <ItemSeparator />
       </ItemGroup>
     </section>

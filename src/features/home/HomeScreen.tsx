@@ -1,7 +1,6 @@
 import { Separator } from "@/shadcn-components/ui/separator"
 import ShowsSection from "./sections/ShowsSection"
 import SignUpModal from "./components/SignUpModal"
-import { pastShows, upcomingShows } from "@/app/constants/shows-data"
 import { useEffect, useState } from "react"
 import MusicSection from "../music/MusicSection"
 import MOBILE_HERO from "@/assets/hero-mobile.jpg"
@@ -16,6 +15,9 @@ import QRScanModal from "./components/QRScanModal"
 import { fetchPhotoUrls } from "@/service/GalleryService"
 import PhotoCarousel from "./components/PhotoCarousel"
 import PhotoCredit from "@/app/components/PhotoCredit"
+import type { Show } from "@/app/types/Show"
+import { fetchShows } from "@/service/ShowService"
+import { isFutureDate, sortShows } from "@/lib/utils"
 interface HomeScreenProps {
   isQRPath: boolean
 }
@@ -24,9 +26,30 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
   const [showPastShows, setShowPastShows] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
   const [photoURLs, setPhotoURLs] = useState<string[]>([])
+  const [upcomingShows, setUpcomingShows] = useState<Show[]>([])
+  const [pastShows, setPastShows] = useState<Show[]>([])
+
+  const sortedUpcomingShows = sortShows(upcomingShows)
+  const sortedPastShows = sortShows(pastShows).reverse()
 
   useEffect(() => {
     fetchPhotoUrls().then((res) => setPhotoURLs(res))
+    fetchShows().then((res) => {
+      const isPast: Show[] = []
+      const isUpcoming: Show[] = []
+      if (res) {
+        res.forEach((show) => {
+          const showDate = new Date(show.date)
+          if (isFutureDate(showDate)) {
+            isUpcoming.push(show)
+          } else {
+            isPast.push(show)
+          }
+        })
+      }
+      setUpcomingShows(isUpcoming)
+      setPastShows(isPast)
+    })
   }, [])
 
   return (
@@ -65,7 +88,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
 
       <Separator />
       <ShowsSection
-        shows={showPastShows ? pastShows : upcomingShows}
+        shows={showPastShows ? sortedPastShows : sortedUpcomingShows}
         toggleShows={(value) => {
           if (value === "past") setShowPastShows(true)
           else setShowPastShows(false)
