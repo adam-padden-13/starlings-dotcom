@@ -27,11 +27,14 @@ const ShowItem = ({ show }: { show: Show }) => {
         <ItemDescription>{show.venue}</ItemDescription>
       </ItemContent>
       <ItemActions>
-        {isFutureDate(showDate) && (
-          <a target="_blank" href={show.ticketLink}>
-            <Button>TICKETS</Button>
-          </a>
-        )}
+        {isFutureDate(showDate) &&
+          (show.ticketLink ? (
+            <a target="_blank" href={show.ticketLink}>
+              <Button>TICKETS</Button>
+            </a>
+          ) : (
+            <Button disabled>TICKETS COMING SOON</Button>
+          ))}
       </ItemActions>
     </Item>
   )
