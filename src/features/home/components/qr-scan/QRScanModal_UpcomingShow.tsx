@@ -1,6 +1,7 @@
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogFooter,
   DialogTitle,
 } from "@/shadcn-components/ui/dialog"
@@ -32,6 +33,9 @@ const QRScanModal_UpcomingShow = () => {
             alt="Starlings show poster. Show details: Friday, November 13th at Orchid Theatre in Ferndale, MI. WSG/ Masha Marjieh band & Pia the band"
             className="max-w-70 self-center"
           />
+          <DialogDescription className="text-center text-lg font-bold">
+            TICKETS COMING SOON
+          </DialogDescription>
         </div>
         <DialogFooter>
           <Button
@@ -44,6 +48,7 @@ const QRScanModal_UpcomingShow = () => {
             Close
           </Button>
           <Button
+            disabled
             onClick={() => {
               window.open("https://starlingsdetroit.com", "_blank")
               setOpen(false)
