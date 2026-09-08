@@ -11,13 +11,13 @@ import {
   AlertTitle,
 } from "@/shadcn-components/ui/alert"
 import { RiCheckboxCircleLine } from "@remixicon/react"
-import QRScanModal from "./components/QRScanModal"
 import { fetchPhotoUrls } from "@/service/GalleryService"
 import PhotoCarousel from "./components/PhotoCarousel"
 import PhotoCredit from "@/app/components/PhotoCredit"
 import type { Show } from "@/app/types/Show"
 import { fetchShows } from "@/service/ShowService"
 import { isFutureDate, sortShows } from "@/lib/utils"
+import QRScanModal_UpcomingShow from "./components/qr-scan/QRScanModal_UpcomingShow"
 interface HomeScreenProps {
   isQRPath: boolean
 }
@@ -54,7 +54,7 @@ const HomeScreen = ({ isQRPath }: HomeScreenProps) => {
 
   return (
     <section className="flex flex-col items-center justify-center gap-6">
-      {isQRPath && <QRScanModal />}
+      {isQRPath && <QRScanModal_UpcomingShow />}
       <div className="relative md:hidden">
         <img
           src={MOBILE_HERO}

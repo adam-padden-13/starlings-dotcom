@@ -33,18 +33,24 @@ export default function App() {
     return () => mediaQuery.removeEventListener("change", resolveTheme)
   }, [theme.theme])
 
+  // Leaving this here until after the release show
+  const isBeforeNov13 = () => {
+    const today = new Date()
+    const nov13 = new Date(today.getFullYear(), 10, 13)
+    return today <= nov13
+  }
+
+  const showQRModal = location.pathname === "/qr-scan" || isBeforeNov13()
+
   return (
     <main
       className={`mx-auto flex min-h-svh max-w-280 flex-col gap-6 px-5 pt-4 ${currentSong ? "pb-26" : "pb-6"} `}
     >
       <Header resolvedTheme={resolvedTheme} />
       <Routes>
+        <Route index element={<HomeScreen isQRPath={showQRModal} />} />
         <Route
-          index
-          element={<HomeScreen isQRPath={location.pathname === "/qr-scan"} />}
-        />
-        <Route
-          element={<HomeScreen isQRPath={location.pathname === "/qr-scan"} />}
+          element={<HomeScreen isQRPath={showQRModal} />}
           path="/qr-scan"
         />
       </Routes>

@@ -1,17 +1,16 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
-  DialogHeader,
   DialogTitle,
 } from "@/shadcn-components/ui/dialog"
 import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
 import { RiArrowRightLine } from "@remixicon/react"
 import { useNavigate } from "react-router"
+import Poster from "@/assets/starlings-nov-13.jpeg"
 
-const QRScanModal = () => {
+const QRScanModal_UpcomingShow = () => {
   const [open, setOpen] = useState(true)
   const navigate = useNavigate()
 
@@ -24,17 +23,16 @@ const QRScanModal = () => {
           setOpen(false)
         }}
       >
-        <DialogHeader>
-          <DialogTitle>Want a sneak peak?</DialogTitle>
-          <DialogDescription>
-            If you've scanned this QR code chances are you saw Starlings at a
-            recent show.
-            <br />
-            <br />
-            Checkout the audio player to hear some of unreleased material that
-            they have been playing live.
-          </DialogDescription>
-        </DialogHeader>
+        <div className="mx-auto">
+          <DialogTitle className="text-center text-2xl">
+            UPCOMING SHOW
+          </DialogTitle>
+          <img
+            src={Poster}
+            alt="Starlings show poster. Show details: Friday, November 13th at Orchid Theatre in Ferndale, MI. WSG/ Masha Marjieh band & Pia the band"
+            className="max-w-70 self-center"
+          />
+        </div>
         <DialogFooter>
           <Button
             variant="outline"
@@ -47,15 +45,12 @@ const QRScanModal = () => {
           </Button>
           <Button
             onClick={() => {
-              navigate("/")
-              document.getElementById("embedded-audio-player")?.scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-              })
+              window.open("https://starlingsdetroit.com", "_blank")
               setOpen(false)
+              navigate("/")
             }}
           >
-            Open Audio Player {<RiArrowRightLine />}{" "}
+            GET TICKETS {<RiArrowRightLine />}{" "}
           </Button>
         </DialogFooter>
       </DialogContent>
@@ -63,4 +58,4 @@ const QRScanModal = () => {
   )
 }
 
-export default QRScanModal
+export default QRScanModal_UpcomingShow
