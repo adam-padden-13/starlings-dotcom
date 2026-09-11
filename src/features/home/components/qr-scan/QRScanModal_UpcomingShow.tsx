@@ -1,7 +1,6 @@
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogFooter,
   DialogTitle,
 } from "@/shadcn-components/ui/dialog"
@@ -9,7 +8,7 @@ import { useState } from "react"
 import { Button } from "@/shadcn-components/ui/button"
 import { RiArrowRightLine } from "@remixicon/react"
 import { useNavigate } from "react-router"
-import Poster from "@/assets/starlings-nov-13.jpeg"
+import POSTER from "@/assets/starlings-nov-13.jpeg"
 
 const QRScanModal_UpcomingShow = () => {
   const [open, setOpen] = useState(true)
@@ -29,13 +28,10 @@ const QRScanModal_UpcomingShow = () => {
             UPCOMING SHOW
           </DialogTitle>
           <img
-            src={Poster}
+            src={POSTER}
             alt="Starlings show poster. Show details: Friday, November 13th at Orchid Theatre in Ferndale, MI. WSG/ Masha Marjieh band & Pia the band"
             className="max-w-70 self-center"
           />
-          <DialogDescription className="text-center text-lg font-bold">
-            TICKETS COMING SOON
-          </DialogDescription>
         </div>
         <DialogFooter>
           <Button
@@ -48,9 +44,11 @@ const QRScanModal_UpcomingShow = () => {
             Close
           </Button>
           <Button
-            disabled
             onClick={() => {
-              window.open("https://starlingsdetroit.com", "_blank")
+              window.open(
+                "https://www.ticketweb.com/event/starlings-orchid-theatre-tickets/14313514",
+                "_blank"
+              )
               setOpen(false)
               navigate("/")
             }}

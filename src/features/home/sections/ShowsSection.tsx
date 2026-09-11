@@ -7,6 +7,7 @@ import {
 } from "@/shadcn-components/ui/toggle-group"
 import { Button } from "@/shadcn-components/ui/button"
 import { useState } from "react"
+import POSTER from "@/assets/starlings-nov-13.jpeg"
 
 interface ShowsSectionProps {
   shows: Show[]
@@ -25,6 +26,23 @@ const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">SHOWS</h2>
+      <section className="flex flex-col items-center">
+        <img
+          src={POSTER}
+          alt="Starlings show poster. Show details: Friday, November 13th at Orchid Theatre in Ferndale, MI. WSG/ Masha Marjieh band & Pia the band"
+          className="max-w-90 self-center"
+        />
+        <Button
+          onClick={() => {
+            window.open(
+              "https://www.ticketweb.com/event/starlings-orchid-theatre-tickets/14313514",
+              "_blank"
+            )
+          }}
+        >
+          GET TICKETS
+        </Button>
+      </section>
       <ToggleGroup className="self-start" type="single" defaultValue="upcoming">
         <ToggleGroupItem
           variant="outline"
