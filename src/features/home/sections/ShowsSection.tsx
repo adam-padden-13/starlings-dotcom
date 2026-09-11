@@ -26,13 +26,14 @@ const ShowsSection = ({ shows, toggleShows }: ShowsSectionProps) => {
   return (
     <section className="flex w-full flex-col items-center gap-6">
       <h2 className="self-center text-4xl">SHOWS</h2>
-      <section className="flex flex-col items-center">
+      <section className="flex flex-col items-center gap-2">
         <img
           src={POSTER}
           alt="Starlings show poster. Show details: Friday, November 13th at Orchid Theatre in Ferndale, MI. WSG/ Masha Marjieh band & Pia the band"
-          className="max-w-90 self-center"
+          className="max-w-90 self-center border p-2"
         />
         <Button
+          size="lg"
           onClick={() => {
             window.open(
               "https://www.ticketweb.com/event/starlings-orchid-theatre-tickets/14313514",
